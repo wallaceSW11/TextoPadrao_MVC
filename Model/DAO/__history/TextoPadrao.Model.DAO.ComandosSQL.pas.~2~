@@ -1,0 +1,13 @@
+unit TextoPadrao.Model.DAO.ComandosSQL;
+
+interface
+
+const
+SQL_CONSULTAR_TEXTOPADRAO = 'Select * from TextoPadrao order by codigo';
+
+implementation
+
+
+
+
+end.

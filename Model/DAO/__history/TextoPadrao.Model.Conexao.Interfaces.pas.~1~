@@ -1,0 +1,7 @@
+unit TextoPadrao.Model.Conexao.Interfaces;
+
+interface
+
+implementation
+
+end.

@@ -1,0 +1,7 @@
+unit TextoPadrao.Model.Controller.Cadastro.Interfaces;
+
+interface
+
+implementation
+
+end.

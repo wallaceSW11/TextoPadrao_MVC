@@ -1,0 +1,16 @@
+unit TextoPadrao.Model.Controller.Cadastro.Interfaces;
+
+interface
+
+uses
+  TextoPadrao.Model.Entidades.TextoPadrao;
+
+type
+  iControllerCadastro = interface
+    procedure GravarTextoPadrao(pTextoPadrao: TTextoPadrao);
+    function RetornarProximoCodigo:string;
+  end;
+
+implementation
+
+end.

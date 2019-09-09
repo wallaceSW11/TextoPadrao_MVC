@@ -1,0 +1,15 @@
+unit TextoPadrao.Model.DAO.ComandosSQL;
+
+interface
+
+const
+  SQL_CONSULTAR_TEXTOPADRAO = 'Select * from TextoPadrao order by codigo';
+  SQL_CONSULTAR_TEXTOPADRAO_FILTRO = 'Select * from TextoPadrao where %s order by codigo';
+  SQL_INSERT_TEXTOPADRAO = 'INSERT INTO TextoPadrao (Codigo, Descricao, Texto) VALUES (';
+
+implementation
+
+
+
+
+end.

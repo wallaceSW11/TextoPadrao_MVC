@@ -1,0 +1,15 @@
+unit TextoPadrao.Model.Controller.TextoPadrao;
+
+interface
+
+uses
+  TextoPadrao.Model.Controller.Interfaces;
+
+type
+  TControllerTextoPadrao = class
+
+  end;
+
+implementation
+
+end.

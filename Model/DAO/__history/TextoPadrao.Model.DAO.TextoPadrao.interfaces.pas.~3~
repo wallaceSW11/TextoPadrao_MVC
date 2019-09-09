@@ -1,0 +1,16 @@
+unit TextoPadrao.Model.DAO.TextoPadrao.interfaces;
+
+interface
+
+uses
+  System.Generics.Collections, uTextoPadrao;
+
+type
+  iDAOTextoPadrao = interface
+    ['{D2B139AC-735F-42CC-948F-C6525E91A4BF}']
+    function CarregarTextoPadrao():TObjectList<TTextoPadrao>;
+  end;
+
+implementation
+
+end.

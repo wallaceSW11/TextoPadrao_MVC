@@ -1,0 +1,22 @@
+unit TextoPadrao.Model.DAO.TextoPadrao.interfaces;
+
+interface
+
+uses
+  System.Generics.Collections, TextoPadrao.Model.Entidades.TextoPadrao;
+
+type
+  iDAOTextoPadrao = interface
+    ['{D2B139AC-735F-42CC-948F-C6525E91A4BF}']
+    function CarregarTextoPadrao():TObjectList<TTextoPadrao>;
+    function CarregarTextoPadraoFiltro(pFiltro: string):TObjectList<TTextoPadrao>;
+    procedure GravarTextoPadrao(pTextoPadrao: TTextoPadrao);
+    procedure SalvarTextoPadrao(pTextoPadrao: TTextoPadrao);
+    function ProximoCodigo():string;
+    procedure GravarUltimoCodigo;
+    procedure ExcluirCadastro(pID: string);
+  end;
+
+implementation
+
+end.

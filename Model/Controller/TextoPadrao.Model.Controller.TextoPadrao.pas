@@ -1,0 +1,57 @@
+unit TextoPadrao.Model.Controller.TextoPadrao;
+
+interface
+
+uses
+  TextoPadrao.Model.Controller.Interfaces, TextoPadrao.Model.Entidades.TextoPadrao,
+  System.Generics.Collections, TextoPadrao.Model.DAO.TextoPadrao, System.sysutils,
+  TextoPadrao.Model.DAO.TextoPadrao.interfaces;
+
+type
+  TControllerTextoPadrao = class(TInterfacedObject, iControllerTextoPadrao)
+  private
+    FLista: TObjectList<TTextoPadrao>;
+    FDAOTextoPadrao: iDAOTextoPadrao;
+  public
+    function RetornarTextoPadraoBanco:TobjectList<TTextopadrao>;
+    function RetornarTextoPadraoBancoFiltro(pFiltro: string): TObjectList<TTextoPadrao>;
+    constructor Create();
+    destructor Destroy; override;
+    class function New: iControllerTextoPadrao;
+
+  end;
+
+implementation
+
+{ TControllerTextoPadrao }
+
+constructor TControllerTextoPadrao.Create;
+begin
+  FDAOTextoPadrao := TDAOTextoPadrao.New;
+end;
+
+destructor TControllerTextoPadrao.Destroy;
+begin
+  inherited;
+end;
+
+class function TControllerTextoPadrao.New: iControllerTextoPadrao;
+begin
+  Result := self.Create;
+end;
+
+function TControllerTextoPadrao.RetornarTextoPadraoBanco: TobjectList<TTextopadrao>;
+begin
+  FLista := FDAOTextoPadrao.CarregarTextoPadrao;
+  Result := FLista;
+end;
+
+function TControllerTextoPadrao.RetornarTextoPadraoBancoFiltro(
+  pFiltro: string): TObjectList<TTextoPadrao>;
+begin
+  FLista := FDAOTextoPadrao.CarregarTextoPadraoFiltro(pFiltro);
+  Result := FLista;
+
+end;
+
+end.

@@ -1,0 +1,85 @@
+object frmCadastro: TfrmCadastro
+  Left = 0
+  Top = 0
+  Caption = 'Cadastro'
+  ClientHeight = 438
+  ClientWidth = 657
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  KeyPreview = True
+  OldCreateOrder = False
+  Position = poMainFormCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object lblCodigo: TLabel
+    Left = 8
+    Top = 8
+    Width = 37
+    Height = 13
+    Caption = 'C'#243'digo:'
+  end
+  object lblDescricao: TLabel
+    Left = 103
+    Top = 8
+    Width = 50
+    Height = 13
+    Caption = 'Descri'#231#227'o:'
+  end
+  object edtID: TEdit
+    Left = 609
+    Top = 0
+    Width = 57
+    Height = 21
+    TabOrder = 0
+    Text = 'edtID'
+  end
+  object edtDescricao: TEdit
+    Left = 106
+    Top = 24
+    Width = 543
+    Height = 21
+    TabOrder = 1
+  end
+  object edtCodigo: TEdit
+    Left = 8
+    Top = 24
+    Width = 89
+    Height = 21
+    TabStop = False
+    BiDiMode = bdRightToLeft
+    Enabled = False
+    ParentBiDiMode = False
+    TabOrder = 2
+  end
+  object mmTexto: TMemo
+    Left = 8
+    Top = 51
+    Width = 641
+    Height = 342
+    Lines.Strings = (
+      '')
+    TabOrder = 3
+  end
+  object btnOK: TButton
+    Left = 493
+    Top = 399
+    Width = 75
+    Height = 25
+    Caption = 'OK'
+    TabOrder = 4
+    OnClick = btnOKClick
+  end
+  object btnCancelar: TButton
+    Left = 574
+    Top = 399
+    Width = 75
+    Height = 25
+    Caption = 'Cancelar'
+    TabOrder = 5
+    OnClick = btnCancelarClick
+  end
+end

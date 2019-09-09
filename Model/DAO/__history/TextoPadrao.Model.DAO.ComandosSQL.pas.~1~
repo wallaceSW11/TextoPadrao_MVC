@@ -1,0 +1,7 @@
+unit TextoPadrao.Model.DAO.ComandosSQL;
+
+interface
+
+implementation
+
+end.

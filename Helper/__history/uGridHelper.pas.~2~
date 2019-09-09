@@ -1,0 +1,30 @@
+unit uGridHelper;
+
+interface
+
+  uses
+    Vcl.Grids;
+
+
+type
+  TGridHelper = class
+
+  public
+  class procedure LimparGrid(pGrid: TStringGrid);
+  end;
+
+implementation
+
+{ THelpGrid }
+
+class procedure TGridHelper.LimparGrid(pGrid: TStringGrid);
+var
+  i: Integer;
+begin
+  for i := 0 to pGrid.RowCount -1 do
+      pGrid.Rows[i].Clear;
+   pGrid.ColCount := 1;
+   pGrid.RowCount := 1;
+end;
+
+end.

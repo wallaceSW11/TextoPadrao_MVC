@@ -1,0 +1,32 @@
+program TextoPadrao;
+
+uses
+  Vcl.Forms,
+  ufrmPrincipal in 'ufrmPrincipal.pas' {frmPrincipal},
+  TextoPadrao.Model.Entidades.TextoPadrao in 'Model\Entidades\TextoPadrao.Model.Entidades.TextoPadrao.pas',
+  uCRUD in 'DAO\uCRUD.pas',
+  uFactoryConnection in 'DAO\uFactoryConnection.pas',
+  uCadastroHelper in 'Helper\uCadastroHelper.pas',
+  uGridHelper in 'Helper\uGridHelper.pas',
+  uHelperAgenda in 'Helper\uHelperAgenda.pas',
+  uTEditHelper in 'Helper\uTEditHelper.pas',
+  uTextoPadraoDAO in 'DAO\uTextoPadraoDAO.pas',
+  ufrmCadastro in 'Telas\ufrmCadastro.pas' {frmCadastro},
+  Vcl.Themes,
+  Vcl.Styles,
+  TextoPadrao.Model.Conexao.Interfaces in 'Model\Conexao\TextoPadrao.Model.Conexao.Interfaces.pas',
+  TextoPadrao.Model.Conexao in 'Model\Conexao\TextoPadrao.Model.Conexao.pas',
+  TextoPadrao.Model.Query in 'Model\Conexao\TextoPadrao.Model.Query.pas' {TextoPadrao.Model.DAO.TextoPadrao.interfaces in 'Model\DAO\TextoPadrao.Model.DAO.TextoPadrao.interfaces.pas';},
+  TextoPadrao.Model.DAO.TextoPadrao.interfaces in 'Model\DAO\TextoPadrao.Model.DAO.TextoPadrao.interfaces.pas',
+  TextoPadrao.Model.DAO.TextoPadrao in 'Model\DAO\TextoPadrao.Model.DAO.TextoPadrao.pas';
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  TStyleManager.TrySetStyle('Amethyst Kamri');
+  Application.CreateForm(TfrmPrincipal, frmPrincipal);
+  Application.CreateForm(TfrmCadastro, frmCadastro);
+  Application.Run;
+end.

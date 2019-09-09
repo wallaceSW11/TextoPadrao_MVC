@@ -1,0 +1,102 @@
+unit uCadastroHelper; // correto
+
+interface
+
+uses
+  System.SysUtils, System.Generics.Collections, System.Win.IEInterfaces,
+  StrUtils, uAgendaDetalhe, uExecuteSQL, Data.DB, Datasnap.DBClient,
+  ZAbstractRODataset, ZAbstractDataset, ZDataset, ZAbstractConnection,
+  ZConnection, ZDbcIntfs, uAgenda, System.Classes, System.Rtti, System.TypInfo,
+  System.Variants, uCliente, uCRUD, uEndereco, Vcl.Forms, Vcl.StdCtrls, uConfiguracao;
+
+type
+  TCadastroHelper = class
+  public
+   class function NextCode(pCampo: string):string;
+   class function ConsultarEndereco(pCEP: string):TEndereco;
+   class procedure AceitaSomenteNumeroVirgula(pCampo :tEdit; var pKey: Char);
+   class function CarregarConfiguracao:TConfiguracao;
+  end;
+
+implementation
+
+{ TCadastroHelper }
+
+
+const PROXIMOCODIGO = 'Select UltimoCodigo from Codigo where Campo= %s';
+const SELECIONARENDERECO = 'Select * from Endereco where CEP= %s';
+
+class function TCadastroHelper.CarregarConfiguracao: TConfiguracao;
+var
+  lLista : TObjectList<TConfiguracao>;
+begin
+  lLista := TObjectList<TConfiguracao>.Create;
+  lLista := TCRUD<TConfiguracao>.Select('Select * from Configuracao');
+
+  Result := lLista.items[0];
+end;
+
+class function TCadastroHelper.ConsultarEndereco(pCEP: string): TEndereco;
+var
+  lEnd : TObjectList<TEndereco>;
+begin
+  lEnd := TObjectList<TEndereco>.Create;
+  lEnd := TCRUD<TEndereco>.Select(format(SELECIONARENDERECO, [QuotedStr(pCEP)]));
+
+  if lEnd = nil then
+    Result := nil
+  else
+    Result := lEnd.Items[0];
+end;
+
+class function TCadastroHelper.NextCode(pCampo: string): string;
+var
+  lCodigo: string;
+begin
+  lCodigo :=  TCRUD<TCliente>.SelectSimples(Format(PROXIMOCODIGO, [QuotedStr(pCampo)]));
+
+  if (lCodigo.IsEmpty) then
+    Result := '1'
+  else
+    Result := IntToStr(strtoint(lCodigo) + 1);
+end;
+
+
+
+class procedure TCadastroHelper.AceitaSomenteNumeroVirgula(pCampo :tEdit; var pKey: Char);
+begin
+  if (CharInSet(pKey,['.',','])) then
+    begin
+      if (pCampo.Text = '') then
+        begin
+          pCampo.Text := '0';
+          pCampo.selstart := Length( pCampo.Text );
+        end;
+
+      if pos(',', pCampo.Text)>0 then
+        pKey := #0
+      else
+        pKey := #44;
+    end
+    else
+  if not (CharInSet(pKey, ['0'..'9',',',#8,#7])) then
+    begin
+      pKey := #0;
+    end;
+end;
+
+//const NEXTCODE_CDPESSOA = 'Select UltimoCodigo from Codigo where Campo= %s';
+//
+//class function TCadastroHelper.NextCode(pCampo: string): string;
+//var
+//  lCodigo: string;
+//begin
+//  lCodigo :=  TCRUD<TCliente>.SelectSimples(Format(NEXTCODE_CDPESSOA, [QuotedStr(pCampo)]));
+//
+//  if (lCodigo.IsEmpty) then
+//    Result := '1'
+//  else
+//    Result := IntToStr(strtoint(lCodigo) + 1);
+//end;
+
+end.

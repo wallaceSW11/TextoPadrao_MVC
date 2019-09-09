@@ -1,0 +1,54 @@
+unit TextoPadrao.Model.Controller.Cadastro;
+
+interface
+
+uses
+  TextoPadrao.Model.Controller.Cadastro.Interfaces, TextoPadrao.Model.DAO.TextoPadrao.interfaces,
+  TextoPadrao.Model.DAO.TextoPadrao;
+
+type
+  TControllerCadastro = class(TInterfacedObject, iControllerCadastro)
+  private
+    FDAOTextoPadrao: iDAOTextoPadrao;
+  public
+    constructor Create;
+    destructor Destroy; override;
+    class function New(): iControllerCadastro;
+    procedure GravarUltimoCodigo;
+    function RetornarProximoCodigo:string;
+
+
+end;
+
+implementation
+
+ { TClasseInterface }
+
+constructor TControllerCadastro.Create;
+begin
+  FDAOTextoPadrao := TDaoTextoPadrao.New;
+end;
+
+destructor TControllerCadastro.Destroy;
+begin
+
+  inherited;
+end;
+
+procedure TControllerCadastro.GravarUltimoCodigo;
+begin
+
+end;
+
+class function TControllerCadastro.New():iControllerCadastro;
+begin
+  Result := Self.Create;
+end;
+
+function TControllerCadastro.RetornarProximoCodigo: string;
+begin
+  Result := FDAOTextoPadrao.ProximoCodigo;
+
+end;
+
+end.

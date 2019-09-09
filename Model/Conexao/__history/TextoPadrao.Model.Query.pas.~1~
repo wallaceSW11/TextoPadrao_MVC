@@ -1,0 +1,7 @@
+unit TextoPadrao.Model.Query;
+
+interface
+
+implementation
+
+end.

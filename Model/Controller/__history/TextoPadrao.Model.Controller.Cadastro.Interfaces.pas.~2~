@@ -1,0 +1,13 @@
+unit TextoPadrao.Model.Controller.Cadastro.Interfaces;
+
+interface
+
+type
+  iCadastro = interface
+    procedure GravarUltimoCodigo;
+    function RetornarProximoCodigo:string;
+  end;
+
+implementation
+
+end.
